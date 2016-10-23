@@ -6,7 +6,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.czakanski.thesis.client.server.service.NotificationService;
-import pl.czakanski.thesis.common.config.BaseAppConfig;
 import pl.czakanski.thesis.common.model.User;
 
 @Service
@@ -17,13 +16,17 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     @Transactional(rollbackFor = Exception.class, readOnly = true)
-    public void sentNotification(User user) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("kontotestowe20160901@gmail.com");
-        message.setTo(user.getEmail());
-        message.setSubject("Activation link");
-        //TODO Parametrized address to activate link
-        message.setText("Use following link to active your account: ");
-        mailSender.send(message);
+    public void sentNotification(User user, String url) {
+        if(user != null) {
+            String urlToActivation = url + "/" + user.getId() + "/active";
+
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom("kontotestowe20160901@gmail.com");
+            message.setTo(user.getEmail());
+            message.setSubject("Activation link");
+            message.setText(String.format("Use following link to active your account: %s", urlToActivation));
+
+            mailSender.send(message);
+        }
     }
 }

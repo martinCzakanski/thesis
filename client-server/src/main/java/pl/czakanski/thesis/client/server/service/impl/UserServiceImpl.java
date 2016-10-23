@@ -20,8 +20,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
-    @Autowired
-    private NotificationService notificationService;
 
     @Override
     @Transactional(rollbackFor = Exception.class, readOnly = true)
@@ -31,15 +29,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void createUser(UserDTO userDTO) {
+    public User createUser(UserDTO userDTO) {
         User user = UtilsDTO.toUser(userDTO);
         if(user != null) {
             user.setCreatedDate(new Date());
             user.setActive(Boolean.FALSE);
             user.setSendNotification(Boolean.TRUE);
-            userDao.save(user);
-            notificationService.sentNotification(user);
+            user = userDao.save(user);
         }
+        return user;
     }
 
     @Override
