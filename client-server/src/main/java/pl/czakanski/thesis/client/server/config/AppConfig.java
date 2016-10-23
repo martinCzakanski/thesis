@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -22,14 +23,13 @@ import pl.czakanski.thesis.common.config.DataSourceBuilder;
 import javax.sql.DataSource;
 import java.util.List;
 
-
+@EnableJpaRepositories("pl.czakanski.thesis.common.dao")
 @ComponentScan("pl.czakanski.thesis.client.server")
 @Import(BaseAppConfig.class)
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
 @EnableAsync
-@EnableScheduling
 @PropertySource("classpath:/application.properties")
 public class AppConfig extends WebMvcConfigurerAdapter {
 
@@ -39,27 +39,27 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	private Environment env;
 
 	@Bean
-	public LocalContainerEntityManagerFactoryBean defaultEntityManagerFactory() {
-		return BaseAppConfig.entityManagerFactory(defaultDataSource(), BaseAppConfig.PERSISTENCE_DEFAULT, env);
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+		return BaseAppConfig.createEntityManagerFactory(dataSource(), BaseAppConfig.PERSISTENCE_DEFAULT, env);
 	}
 
 	@Bean
-	public DataSource defaultDataSource() {
+	public DataSource dataSource() {
 		return new DataSourceBuilder(env)
 				.idleConnectionTestPeriodInMinutes("1")
 				.idleMaxAgeInMinutes("1")
 				.maxConnectionsPerPartition("100")
 				.minConnectionsPerPartition("50")
-				.partitionCount("10")
+				.partitionCount("4")
 				.acquireIncrement("50")
 				.statementsCacheSize("100")
 				.build();
 	}
 
-	@Bean(name = BaseAppConfig.TRANSACTION_DEFAULT)
-	public PlatformTransactionManager defaultTransactionManager() {
+	@Bean
+	public PlatformTransactionManager transactionManager() {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(defaultEntityManagerFactory().getObject());
+		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 		return transactionManager;
 	}
 

@@ -60,16 +60,16 @@ public class DataSourceBuilder {
     public BoneCPDataSource build() {
         BoneCPDataSource dataSource = new BoneCPDataSource();
         dataSource.setDriverClass(SQLServerDriver.class.getName());
-        dataSource.setJdbcUrl(env.getProperty("url"));
-        dataSource.setUsername(env.getProperty("user"));
-        dataSource.setPassword(env.getProperty("password"));
-        dataSource.setIdleConnectionTestPeriodInMinutes(Long.parseLong(env.getProperty("idleConnectionTestPeriodInMinutes", idleConnectionTestPeriodInMinutes)));
-        dataSource.setIdleMaxAgeInMinutes(Long.parseLong(env.getProperty("idleMaxAgeInMinutes", idleMaxAgeInMinutes)));
-        dataSource.setMaxConnectionsPerPartition(Integer.parseInt(env.getProperty("maxConnectionsPerPartition", maxConnectionsPerPartition)));
-        dataSource.setMinConnectionsPerPartition(Integer.parseInt(env.getProperty("minConnectionsPerPartition", minConnectionsPerPartition)));
-        dataSource.setPartitionCount(Integer.parseInt(env.getProperty("partitionCount", partitionCount)));
-        dataSource.setAcquireIncrement(Integer.parseInt(env.getProperty("acquireIncrement", acquireIncrement)));
-        dataSource.setStatementsCacheSize(Integer.parseInt(env.getProperty("statementsCacheSize", statementsCacheSize)));
+        dataSource.setJdbcUrl(env.getProperty("db.url"));
+        dataSource.setUsername(env.getProperty("db.user"));
+        dataSource.setPassword(env.getProperty("db.password"));
+        dataSource.setIdleConnectionTestPeriodInMinutes(Long.parseLong(env.getProperty("db.idleConnectionTestPeriodInMinutes", idleConnectionTestPeriodInMinutes)));
+        dataSource.setIdleMaxAgeInMinutes(Long.parseLong(env.getProperty("db.idleMaxAgeInMinutes", idleMaxAgeInMinutes)));
+        dataSource.setMaxConnectionsPerPartition(Integer.parseInt(env.getProperty("db.maxConnectionsPerPartition", maxConnectionsPerPartition)));
+        dataSource.setMinConnectionsPerPartition(Integer.parseInt(env.getProperty("db.minConnectionsPerPartition", minConnectionsPerPartition)));
+        dataSource.setPartitionCount(Integer.parseInt(env.getProperty("db.partitionCount", partitionCount)));
+        dataSource.setAcquireIncrement(Integer.parseInt(env.getProperty("db.acquireIncrement", acquireIncrement)));
+        dataSource.setStatementsCacheSize(Integer.parseInt(env.getProperty("db.statementsCacheSize", statementsCacheSize)));
         dataSource.setLogStatementsEnabled(true);
         return dataSource;
     }
