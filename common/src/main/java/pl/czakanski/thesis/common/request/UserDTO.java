@@ -1,4 +1,4 @@
-package pl.czakanski.thesis.common.dto;
+package pl.czakanski.thesis.common.request;
 
 public class UserDTO {
 

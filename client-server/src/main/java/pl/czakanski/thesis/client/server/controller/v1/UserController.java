@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.czakanski.thesis.client.server.service.NotificationService;
+import pl.czakanski.thesis.client.server.service.SessionService;
 import pl.czakanski.thesis.client.server.service.UserService;
-import pl.czakanski.thesis.common.dto.UserDTO;
+import pl.czakanski.thesis.common.helpers.MethodExecutor;
 import pl.czakanski.thesis.common.model.User;
+import pl.czakanski.thesis.common.request.ClientRequest;
+import pl.czakanski.thesis.common.request.UserDTO;
+import pl.czakanski.thesis.common.request.UserRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -24,33 +28,75 @@ public class UserController {
     UserService userService;
     @Autowired
     private NotificationService notificationService;
+    @Autowired
+    private SessionService sessionService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity create(@RequestBody UserDTO user, HttpServletRequest request) {
-        User createdUser = userService.createUser(user);
-        notificationService.sentNotification(createdUser, request.getRequestURL().toString());
+    public ResponseEntity create(@RequestBody final UserDTO request, final HttpServletRequest httpRequest) {
+        User createdUser = userService.createUser(request);
+        notificationService.sentNotification(createdUser, httpRequest.getRequestURL().toString());
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<UserDTO>> list() {
-        return new ResponseEntity<List<UserDTO>>(userService.getAll(), HttpStatus.CREATED);
+    public ResponseEntity<List<UserDTO>> list(@RequestBody final ClientRequest request) {
+        return new MethodExecutor<List<UserDTO>>(request) {
+            @Override
+            protected boolean isAuthenticated(ClientRequest request) {
+                return sessionService.isAuthenticated(request);
+            }
+
+            @Override
+            protected ResponseEntity<List<UserDTO>> execute() {
+                return new ResponseEntity<List<UserDTO>>(userService.getAll(), HttpStatus.CREATED);
+            }
+        }.start();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity update(@PathVariable("id") int userId, @RequestBody UserDTO user) {
-        userService.updateUser(user);
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity update(@PathVariable("id") final int userId, @RequestBody final UserRequest request) {
+        return new MethodExecutor(request) {
+            @Override
+            protected boolean isAuthenticated(ClientRequest request) {
+                return sessionService.isAuthenticated(request);
+            }
+
+            @Override
+            protected ResponseEntity execute() {
+                userService.updateUser(request.getUserDTO());
+                return new ResponseEntity(HttpStatus.OK);
+            }
+        }.start();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity delete(@PathVariable("id") int userId) {
-        userService.disableUser(userId);
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity delete(@PathVariable("id") final int userId, @RequestBody final ClientRequest request) {
+        return new MethodExecutor(request) {
+            @Override
+            protected boolean isAuthenticated(ClientRequest request) {
+                return sessionService.isAuthenticated(request);
+            }
+
+            @Override
+            protected ResponseEntity execute() {
+                userService.disableUser(userId);
+                return new ResponseEntity(HttpStatus.OK);
+            }
+        }.start();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<UserDTO> get(@PathVariable("id") int userId) {
-        return new ResponseEntity<UserDTO>(userService.get(userId), HttpStatus.OK);
+    public ResponseEntity<UserDTO> get(@PathVariable("id") final int userId, @RequestBody final ClientRequest request) {
+        return new MethodExecutor<UserDTO>(request) {
+            @Override
+            protected boolean isAuthenticated(ClientRequest request) {
+                return sessionService.isAuthenticated(request);
+            }
+
+            @Override
+            protected ResponseEntity<UserDTO> execute() {
+                return new ResponseEntity<UserDTO>(userService.get(userId), HttpStatus.OK);
+            }
+        }.start();
     }
 }

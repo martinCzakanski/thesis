@@ -18,7 +18,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     public void sentNotification(User user, String url) {
         if(user != null) {
-            String urlToActivation = url + "/" + user.getId() + "/active";
+            String urlToActivation = url + "/" + user.getUserId() + "/active";
 
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom("kontotestowe20160901@gmail.com");

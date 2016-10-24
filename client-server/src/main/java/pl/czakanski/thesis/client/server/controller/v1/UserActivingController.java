@@ -18,7 +18,7 @@ public class UserActivingController {
     private UserService userService;
 
     @RequestMapping(value = "/{id}/active", method = RequestMethod.GET)
-    public ResponseEntity activeUserAccount(@PathVariable("id") int userId) {
+    public ResponseEntity activeUserAccount(@PathVariable("id") final int userId) {
         userService.activeUser(userId);
         return new ResponseEntity(HttpStatus.OK);
     }

@@ -1,6 +1,7 @@
-package pl.czakanski.thesis.common.dto;
+package pl.czakanski.thesis.common.converter;
 
 import pl.czakanski.thesis.common.model.User;
+import pl.czakanski.thesis.common.request.UserDTO;
 
 public class UtilsDTO {
 
@@ -8,7 +9,7 @@ public class UtilsDTO {
         User user = null;
         if(userDTO != null) {
             user = new User();
-            user.setId(userDTO.getId());
+            user.setUserId(userDTO.getId());
             user.setName(userDTO.getName());
             user.setEmail(userDTO.getEmail());
             user.setPassword(userDTO.getPassword());
@@ -20,7 +21,7 @@ public class UtilsDTO {
         UserDTO userDTO = null;
         if(user != null) {
             userDTO = new UserDTO();
-            userDTO.setId(user.getId());
+            userDTO.setId(user.getUserId());
             userDTO.setName(user.getName());
             userDTO.setEmail(user.getEmail());
             userDTO.setPassword(user.getPassword());

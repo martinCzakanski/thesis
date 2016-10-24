@@ -8,8 +8,8 @@ public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "article_id", nullable = false)
+    private Integer articleId;
 
     @Column(name = "text", nullable = false)
     private String text;
@@ -20,12 +20,12 @@ public class Article {
     @Column(name = "user_id", nullable = false)
     private Integer userId;
 
-    public Integer getId() {
-        return id;
+    public Integer getArticleId() {
+        return articleId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setArticleId(Integer articleId) {
+        this.articleId = articleId;
     }
 
     public String getText() {

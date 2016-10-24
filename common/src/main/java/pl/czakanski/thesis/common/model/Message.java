@@ -11,8 +11,8 @@ import java.util.Date;
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "message_id", nullable = false)
+    private Integer messageId;
 
     @Column(name = "message", nullable = false)
     private String message;
@@ -28,12 +28,12 @@ public class Message {
     @Column(name = "user_id")
     private Integer userId;
 
-    public Integer getId() {
-        return id;
+    public Integer getMessageId() {
+        return messageId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setMessageId(Integer messageId) {
+        this.messageId = messageId;
     }
 
     public String getMessage() {

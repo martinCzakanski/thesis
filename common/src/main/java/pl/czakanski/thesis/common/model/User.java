@@ -9,8 +9,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "user_id", nullable = false)
+    private Integer userId;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -31,12 +31,12 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {

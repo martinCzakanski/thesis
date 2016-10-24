@@ -2,6 +2,7 @@ package pl.czakanski.thesis.client.server.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.czakanski.thesis.client.server.service.ArticleService;
 import pl.czakanski.thesis.common.dao.ArticleDao;
 import pl.czakanski.thesis.common.model.Article;
@@ -16,6 +17,13 @@ public class ArticleServiceImpl implements ArticleService {
     private ArticleDao articleDao;
 
     @Override
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    public Article get(Integer articleId) {
+        return articleDao.findOne(articleId);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
     public List<String> matchLines(Integer articleId, String searchTerm) {
         List<String> matches = new ArrayList<String>();
         Article article = articleDao.findOne(articleId);

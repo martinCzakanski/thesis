@@ -4,8 +4,6 @@ import com.jolbox.bonecp.BoneCPDataSource;
 import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 import org.springframework.core.env.Environment;
 
-import javax.sql.DataSource;
-
 public class DataSourceBuilder {
     
     private Environment env;

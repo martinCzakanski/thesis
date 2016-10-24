@@ -3,13 +3,11 @@ package pl.czakanski.thesis.client.server.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.czakanski.thesis.client.server.service.NotificationService;
 import pl.czakanski.thesis.client.server.service.UserService;
-import pl.czakanski.thesis.common.config.BaseAppConfig;
+import pl.czakanski.thesis.common.converter.UtilsDTO;
 import pl.czakanski.thesis.common.dao.UserDao;
-import pl.czakanski.thesis.common.dto.UserDTO;
-import pl.czakanski.thesis.common.dto.UtilsDTO;
 import pl.czakanski.thesis.common.model.User;
+import pl.czakanski.thesis.common.request.UserDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -86,5 +84,11 @@ public class UserServiceImpl implements UserService {
     @Transactional(rollbackFor = Exception.class, readOnly = true)
     public boolean existUser(Integer id) {
         return userDao.exists(id);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, readOnly = true)
+    public User getAuthenticatedUser(String email, String password) {
+        return userDao.getAuthenticatedUser(email, password);
     }
 }

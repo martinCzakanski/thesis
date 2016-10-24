@@ -1,7 +1,7 @@
 package pl.czakanski.thesis.client.server.service;
 
-import pl.czakanski.thesis.common.dto.UserDTO;
 import pl.czakanski.thesis.common.model.User;
+import pl.czakanski.thesis.common.request.UserDTO;
 
 import java.util.List;
 
@@ -14,4 +14,5 @@ public interface UserService {
     List<UserDTO> getAll();
     UserDTO get(Integer id);
     boolean existUser(Integer id);
+    User getAuthenticatedUser(String email, String password);
 }
