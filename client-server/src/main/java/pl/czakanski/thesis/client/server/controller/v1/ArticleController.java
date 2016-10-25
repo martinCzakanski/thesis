@@ -26,7 +26,7 @@ public class ArticleController {
     @Autowired
     private SessionService sessionService;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
     public ResponseEntity<Article> get(@PathVariable("id") final int articleId, @RequestBody final ClientRequest request) {
         return new MethodExecutor<Article>(request) {
             @Override
@@ -41,7 +41,7 @@ public class ArticleController {
         }.start();
     }
 
-    @RequestMapping(value = "/{id}/matched", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/matched", method = RequestMethod.POST)
     public ResponseEntity<List<String>> match(@PathVariable("id") final int articleId, @RequestBody final MatchArticleRequest request) {
         return new MethodExecutor<List<String>>(request) {
             @Override

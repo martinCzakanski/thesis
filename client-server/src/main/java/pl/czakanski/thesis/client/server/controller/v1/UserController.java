@@ -39,18 +39,11 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<UserDTO>> list(@RequestBody final ClientRequest request) {
-        return new MethodExecutor<List<UserDTO>>(request) {
-            @Override
-            protected boolean isAuthenticated(ClientRequest request) {
-                return sessionService.isAuthenticated(request);
-            }
+    public ResponseEntity<List<UserDTO>> list() {
 
-            @Override
-            protected ResponseEntity<List<UserDTO>> execute() {
-                return new ResponseEntity<List<UserDTO>>(userService.getAll(), HttpStatus.CREATED);
-            }
-        }.start();
+
+                return new ResponseEntity<List<UserDTO>>(userService.getAll(), HttpStatus.OK);
+
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -86,17 +79,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<UserDTO> get(@PathVariable("id") final int userId, @RequestBody final ClientRequest request) {
-        return new MethodExecutor<UserDTO>(request) {
-            @Override
-            protected boolean isAuthenticated(ClientRequest request) {
-                return sessionService.isAuthenticated(request);
-            }
-
-            @Override
-            protected ResponseEntity<UserDTO> execute() {
-                return new ResponseEntity<UserDTO>(userService.get(userId), HttpStatus.OK);
-            }
-        }.start();
+    public ResponseEntity<UserDTO> get(@PathVariable("id") final int userId) {
+        return new ResponseEntity<UserDTO>(userService.get(userId), HttpStatus.OK);
     }
 }
