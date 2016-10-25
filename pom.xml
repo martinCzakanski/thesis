@@ -11,8 +11,11 @@
     <modules>
         <module>client-server</module>
         <module>common</module>
-        <module>microservices</module>
-        <module>nanoservices</module>
+        <module>microservices/microservice-article</module>
+        <module>microservices/microservice-session</module>
+        <module>microservices/microservice-user</module>
+        <module>microservices/microservice-message</module>
+
     </modules>
 
 </project>

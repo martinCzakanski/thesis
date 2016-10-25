@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="microservice-message:war">
+    <output-path>$PROJECT_DIR$/microservices/microservice-message/target</output-path>
+    <root id="archive" name="microservice-message.war">
+      <element id="artifact" artifact-name="microservice-message:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -8,17 +8,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.czakanski.thesis.client.server.service.UserService;
+import pl.czakanski.thesis.common.request.ConstantRequest;
 
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = ConstantRequest.USER)
 public class UserActivingController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/{id}/active", method = RequestMethod.GET)
-    public ResponseEntity activeUserAccount(@PathVariable("id") final int userId) {
+    @RequestMapping(value = ConstantRequest.USER_ACTIVATION, method = RequestMethod.GET)
+    public ResponseEntity activeUserAccount(@PathVariable(ConstantRequest.ID_PATH) final int userId) {
         userService.activeUser(userId);
         return new ResponseEntity(HttpStatus.OK);
     }

@@ -14,6 +14,7 @@ import pl.czakanski.thesis.client.server.service.UserService;
 import pl.czakanski.thesis.common.helpers.MethodExecutor;
 import pl.czakanski.thesis.common.model.User;
 import pl.czakanski.thesis.common.request.ClientRequest;
+import pl.czakanski.thesis.common.request.ConstantRequest;
 import pl.czakanski.thesis.common.request.UserDTO;
 import pl.czakanski.thesis.common.request.UserRequest;
 
@@ -21,11 +22,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = ConstantRequest.USER)
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
     @Autowired
     private NotificationService notificationService;
     @Autowired
@@ -43,8 +44,8 @@ public class UserController {
         return new ResponseEntity<List<UserDTO>>(userService.getAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity update(@PathVariable("id") final int userId, @RequestBody final UserRequest request) {
+    @RequestMapping(value = ConstantRequest.ID, method = RequestMethod.PUT)
+    public ResponseEntity update(@PathVariable(ConstantRequest.ID_PATH) final int userId, @RequestBody final UserRequest request) {
         return new MethodExecutor(request) {
             @Override
             protected boolean isAuthenticated(ClientRequest request) {
@@ -59,8 +60,8 @@ public class UserController {
         }.start();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity delete(@PathVariable("id") final int userId, @RequestBody final ClientRequest request) {
+    @RequestMapping(value = ConstantRequest.ID, method = RequestMethod.DELETE)
+    public ResponseEntity delete(@PathVariable(ConstantRequest.ID_PATH) final int userId, @RequestBody final ClientRequest request) {
         return new MethodExecutor(request) {
             @Override
             protected boolean isAuthenticated(ClientRequest request) {
@@ -75,8 +76,8 @@ public class UserController {
         }.start();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<UserDTO> get(@PathVariable("id") final int userId) {
+    @RequestMapping(value = ConstantRequest.ID, method = RequestMethod.GET)
+    public ResponseEntity<UserDTO> get(@PathVariable(ConstantRequest.ID_PATH) final int userId) {
         return new ResponseEntity<UserDTO>(userService.get(userId), HttpStatus.OK);
     }
 }

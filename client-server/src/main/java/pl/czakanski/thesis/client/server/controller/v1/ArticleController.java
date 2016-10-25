@@ -13,12 +13,13 @@ import pl.czakanski.thesis.client.server.service.SessionService;
 import pl.czakanski.thesis.common.helpers.MethodExecutor;
 import pl.czakanski.thesis.common.model.Article;
 import pl.czakanski.thesis.common.request.ClientRequest;
+import pl.czakanski.thesis.common.request.ConstantRequest;
 import pl.czakanski.thesis.common.request.MatchArticleRequest;
 
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/article")
+@RequestMapping(value = ConstantRequest.ARTICLE)
 public class ArticleController {
 
     @Autowired
@@ -26,8 +27,8 @@ public class ArticleController {
     @Autowired
     private SessionService sessionService;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Article> get(@PathVariable("id") final int articleId, @RequestBody final ClientRequest request) {
+    @RequestMapping(value = ConstantRequest.ID, method = RequestMethod.POST)
+    public ResponseEntity<Article> get(@PathVariable(ConstantRequest.ID_PATH) final int articleId, @RequestBody final ClientRequest request) {
         return new MethodExecutor<Article>(request) {
             @Override
             protected boolean isAuthenticated(ClientRequest request) {
@@ -41,8 +42,8 @@ public class ArticleController {
         }.start();
     }
 
-    @RequestMapping(value = "/{id}/matched", method = RequestMethod.POST)
-    public ResponseEntity<List<String>> match(@PathVariable("id") final int articleId, @RequestBody final MatchArticleRequest request) {
+    @RequestMapping(value = ConstantRequest.ARTICLE_MATCH, method = RequestMethod.POST)
+    public ResponseEntity<List<String>> match(@PathVariable(ConstantRequest.ID_PATH) final int articleId, @RequestBody final MatchArticleRequest request) {
         return new MethodExecutor<List<String>>(request) {
             @Override
             protected boolean isAuthenticated(ClientRequest request) {

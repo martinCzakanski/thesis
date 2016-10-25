@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/client-server/client-server.iml" filepath="$PROJECT_DIR$/client-server/client-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/microservice-article/microservice-article.iml" filepath="$PROJECT_DIR$/microservices/microservice-article/microservice-article.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/microservice-message/microservice-message.iml" filepath="$PROJECT_DIR$/microservices/microservice-message/microservice-message.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/microservice-session/microservice-session.iml" filepath="$PROJECT_DIR$/microservices/microservice-session/microservice-session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/microservice-user/microservice-user.iml" filepath="$PROJECT_DIR$/microservices/microservice-user/microservice-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/microservices.iml" filepath="$PROJECT_DIR$/microservices/microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/thesis.iml" filepath="$PROJECT_DIR$/.idea/thesis.iml" />
+    </modules>
+  </component>
+</project>

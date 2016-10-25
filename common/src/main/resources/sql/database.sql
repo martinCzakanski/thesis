@@ -5,7 +5,7 @@ CREATE USER [thesis] FOR LOGIN [thesis] WITH DEFAULT_SCHEMA=[dbo]
 GO
 ALTER ROLE [db_owner] ADD MEMBER [thesis]
 GO
-/****** Object:  Table [dbo].[article]    Script Date: 2016-10-25 18:04:06 ******/
+/****** Object:  Table [dbo].[message]    Script Date: 2016-10-25 18:04:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -32,7 +32,7 @@ CREATE TABLE [dbo].[message](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[session]    Script Date: 2016-10-25 18:04:06 ******/
+/****** Object:  Table [dbo].[message]    Script Date: 2016-10-25 18:04:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

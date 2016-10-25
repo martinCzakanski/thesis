@@ -12,10 +12,11 @@ import pl.czakanski.thesis.client.server.service.SessionService;
 import pl.czakanski.thesis.common.helpers.MethodExecutor;
 import pl.czakanski.thesis.common.model.Session;
 import pl.czakanski.thesis.common.request.ClientRequest;
+import pl.czakanski.thesis.common.request.ConstantRequest;
 import pl.czakanski.thesis.common.request.MessageRequest;
 
 @Controller
-@RequestMapping(value = "/message")
+@RequestMapping(value = ConstantRequest.MESSAGE)
 public class MessageController {
 
     @Autowired

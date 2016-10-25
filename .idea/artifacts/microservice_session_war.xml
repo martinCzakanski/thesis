@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="microservice-session:war">
+    <output-path>$PROJECT_DIR$/microservices/microservice-session/target</output-path>
+    <root id="archive" name="microservice-session.war">
+      <element id="artifact" artifact-name="microservice-session:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -11,16 +11,17 @@ import pl.czakanski.thesis.client.server.service.SessionService;
 import pl.czakanski.thesis.client.server.service.UserService;
 import pl.czakanski.thesis.common.model.User;
 import pl.czakanski.thesis.common.request.ClientRequest;
+import pl.czakanski.thesis.common.request.ConstantRequest;
 import pl.czakanski.thesis.common.request.LoginRequest;
 
 @Controller
-@RequestMapping(value = "/session")
+@RequestMapping(value = ConstantRequest.SESSION)
 public class SessionController {
 
     @Autowired
-    SessionService sessionService;
+    private SessionService sessionService;
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> login(@RequestBody final LoginRequest request) {
