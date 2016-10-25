@@ -16,6 +16,10 @@
         <module>microservices/microservice-user</module>
         <module>microservices/microservice-message</module>
 
+		<module>nanoservices/nanoservice-article</module>
+        <module>nanoservices/nanoservice-session</module>
+        <module>nanoservices/nanoservice-user</module>
+        <module>nanoservices/nanoservice-message</module>
     </modules>
 
 </project>

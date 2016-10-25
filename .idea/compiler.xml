@@ -28,6 +28,10 @@
         <module name="microservice-message" />
         <module name="microservice-session" />
         <module name="microservice-user" />
+        <module name="nanoservice-article" />
+        <module name="nanoservice-message" />
+        <module name="nanoservice-session" />
+        <module name="nanoservice-user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -39,6 +43,10 @@
       <module name="microservice-session" target="1.6" />
       <module name="microservice-user" target="1.6" />
       <module name="microservices" target="1.5" />
+      <module name="nanoservice-article" target="1.6" />
+      <module name="nanoservice-message" target="1.6" />
+      <module name="nanoservice-session" target="1.6" />
+      <module name="nanoservice-user" target="1.6" />
       <module name="nanoservices" target="1.5" />
       <module name="thesis" target="1.5" />
     </bytecodeTargetLevel>

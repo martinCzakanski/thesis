@@ -9,6 +9,10 @@
     <file type="web" url="file://$PROJECT_DIR$/microservices/microservice-message" />
     <file type="web" url="file://$PROJECT_DIR$/microservices/microservice-session" />
     <file type="web" url="file://$PROJECT_DIR$/microservices/microservice-user" />
+    <file type="web" url="file://$PROJECT_DIR$/nanoservices/nanoservice-article" />
+    <file type="web" url="file://$PROJECT_DIR$/nanoservices/nanoservice-message" />
+    <file type="web" url="file://$PROJECT_DIR$/nanoservices/nanoservice-session" />
+    <file type="web" url="file://$PROJECT_DIR$/nanoservices/nanoservice-user" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="nanoservice-message:war">
+    <output-path>$PROJECT_DIR$/nanoservices/nanoservice-message/target</output-path>
+    <root id="archive" name="nanoservice-message.war">
+      <element id="artifact" artifact-name="nanoservice-message:war exploded" />
+    </root>
+  </artifact>
+</component>
