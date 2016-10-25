@@ -24,7 +24,7 @@ public class SessionController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> login(@RequestBody final LoginRequest request) {
-        User user = userService.getAuthenticatedUser(request.getMail(), request.getPassword());
+        User user = userService.getAuthenticatedUser(request.getEmail(), request.getPassword());
         if(user != null) {
             String sessionId = sessionService.createSession(user.getUserId());
             return new ResponseEntity<String>(sessionId, HttpStatus.CREATED);

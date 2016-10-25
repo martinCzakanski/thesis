@@ -15,7 +15,7 @@ public abstract class MethodExecutor<T extends Object> {
         ResponseEntity<T> response;
         if (!verifyRequest(clientRequest)) {
             response = new ResponseEntity<T>(HttpStatus.BAD_REQUEST);
-        } else if (isAuthenticated(clientRequest)) {
+        } else if (!isAuthenticated(clientRequest)) {
             response = new ResponseEntity<T>(HttpStatus.UNAUTHORIZED);
         } else {
             response = execute();

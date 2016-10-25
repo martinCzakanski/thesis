@@ -23,8 +23,8 @@ public class Session {
     @Column(name = "user_id", nullable = false)
     private Integer userId;
 
-    @Column(name = "session", nullable = false)
-    private String session;
+    @Column(name = "session_value", nullable = false)
+    private String sessionValue;
 
     @Column(name = "closed", nullable = false)
     private boolean closed;
@@ -61,12 +61,12 @@ public class Session {
         this.userId = userId;
     }
 
-    public String getSession() {
-        return session;
+    public String getSessionValue() {
+        return sessionValue;
     }
 
-    public void setSession(String session) {
-        this.session = session;
+    public void setSessionValue(String sessionValue) {
+        this.sessionValue = sessionValue;
     }
 
     public boolean isClosed() {

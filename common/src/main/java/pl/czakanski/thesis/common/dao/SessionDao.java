@@ -7,6 +7,6 @@ import pl.czakanski.thesis.common.model.Session;
 
 public interface SessionDao extends CrudRepository<Session, Integer> {
 
-    @Query("select s from Session s where s.closed = 0 and s.session=:session")
-    Session getOpenSession(@Param("session") String session);
+    @Query("select s from Session s where s.closed = 0 and s.sessionValue=:sessionValue")
+    Session getOpenSession(@Param("sessionValue") String sessionValue);
 }

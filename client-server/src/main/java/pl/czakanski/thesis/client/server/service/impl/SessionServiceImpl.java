@@ -28,10 +28,10 @@ public class SessionServiceImpl implements SessionService {
         session.setCreateTime(new Date());
         session.setUserId(userId);
         session.setClosed(Boolean.FALSE);
-        session.setSession(UUID.randomUUID().toString());
+        session.setSessionValue(UUID.randomUUID().toString());
         sessionDao.save(session);
-        sessionMap.put(session.getSession(), session);
-        return session.getSession();
+        sessionMap.put(session.getSessionValue(), session);
+        return session.getSessionValue();
     }
 
 
@@ -43,7 +43,7 @@ public class SessionServiceImpl implements SessionService {
             session.setUpdateTime(new Date());
             session.setClosed(Boolean.TRUE);
             sessionDao.save(session);
-            sessionMap.remove(request.getSessionId());
+            sessionMap.remove(session.getSessionValue());
         }
     }
 
@@ -72,6 +72,6 @@ public class SessionServiceImpl implements SessionService {
     private void updateSession(Session session) {
         session.setUpdateTime(new Date());
         sessionDao.save(session);
-        sessionMap.put(session.getSession(), session);
+        sessionMap.put(session.getSessionValue(), session);
     }
 }

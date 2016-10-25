@@ -40,10 +40,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<UserDTO>> list() {
-
-
-                return new ResponseEntity<List<UserDTO>>(userService.getAll(), HttpStatus.OK);
-
+        return new ResponseEntity<List<UserDTO>>(userService.getAll(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)

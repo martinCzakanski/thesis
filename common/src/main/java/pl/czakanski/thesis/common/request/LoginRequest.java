@@ -2,15 +2,15 @@ package pl.czakanski.thesis.common.request;
 
 public class LoginRequest {
 
-    private String mail;
+    private String email;
     private String password;
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
