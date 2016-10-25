@@ -13,7 +13,6 @@ import pl.czakanski.thesis.common.helpers.MethodExecutor;
 import pl.czakanski.thesis.common.helpers.NanoserviceConstant;
 import pl.czakanski.thesis.common.model.User;
 import pl.czakanski.thesis.common.request.*;
-import pl.czakanski.thesis.nanoservice.user.service.NotificationService;
 import pl.czakanski.thesis.nanoservice.user.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,14 +27,21 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
-    private NotificationService notificationService;
-    @Autowired
     private RestTemplate restTemplate;
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity create(@RequestBody final UserDTO request, final HttpServletRequest httpRequest) {
         User createdUser = userService.createUser(request);
-        notificationService.sentNotification(createdUser, httpRequest.getRequestURL().toString());
+        NotificationRequest notificationRequest = new NotificationRequest();
+        notificationRequest.setUser(createdUser);
+        notificationRequest.setUrl(httpRequest.getRequestURL().toString());
+
+        try {
+           restTemplate.postForEntity(new URI(NanoserviceConstant.NOTIFICATION_SERVICE + ConstantRequest.NOTIFICATION), notificationRequest, null);
+        } catch (URISyntaxException e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
@@ -84,6 +90,12 @@ public class UserController {
     @RequestMapping(value = ConstantRequest.USER_AUTHENTICATED, method = RequestMethod.POST)
     public ResponseEntity<User> getAuthenticated (@RequestBody final LoginRequest request) {
         return new ResponseEntity<User>(userService.getAuthenticatedUser(request.getEmail(), request.getPassword()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = ConstantRequest.USER_ACTIVATION, method = RequestMethod.GET)
+    public ResponseEntity activeUserAccount(@PathVariable(ConstantRequest.ID_PATH) final int userId) {
+        userService.activeUser(userId);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     private boolean isAuthenticatedSession(ClientRequest request) {

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="nanoservice-user-activation:war">
+    <output-path>$PROJECT_DIR$/nanoservices/nanoservice-user-activation/target</output-path>
+    <root id="archive" name="nanoservice-user-activation.war">
+      <element id="artifact" artifact-name="nanoservice-user-activation:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -18,5 +18,8 @@ public class ConstantRequest {
 
     public static final String USER = "/user";
     public static final String USER_AUTHENTICATED = AUTHENTICATED;
-    public static final String USER_ACTIVATION = ID + "/active";
+    public static final String USER_ACTIVE = "/active";
+    public static final String USER_ACTIVATION = ID + USER_ACTIVE;
+
+    public static final String NOTIFICATION = "/notification";
 }

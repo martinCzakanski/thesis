@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="nanoservice-session-save:war">
+    <output-path>$PROJECT_DIR$/nanoservices/nanoservice-session-save/target</output-path>
+    <root id="archive" name="nanoservice-session-save.war">
+      <element id="artifact" artifact-name="nanoservice-session-save:war exploded" />
+    </root>
+  </artifact>
+</component>

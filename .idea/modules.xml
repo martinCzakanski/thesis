@@ -11,8 +11,11 @@
       <module fileurl="file://$PROJECT_DIR$/microservices/microservices.iml" filepath="$PROJECT_DIR$/microservices/microservices.iml" />
       <module fileurl="file://$PROJECT_DIR$/nanoservices/nanoservice-article/nanoservice-article.iml" filepath="$PROJECT_DIR$/nanoservices/nanoservice-article/nanoservice-article.iml" />
       <module fileurl="file://$PROJECT_DIR$/nanoservices/nanoservice-message/nanoservice-message.iml" filepath="$PROJECT_DIR$/nanoservices/nanoservice-message/nanoservice-message.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nanoservices/nanoservice-notification/nanoservice-notification.iml" filepath="$PROJECT_DIR$/nanoservices/nanoservice-notification/nanoservice-notification.iml" />
       <module fileurl="file://$PROJECT_DIR$/nanoservices/nanoservice-session/nanoservice-session.iml" filepath="$PROJECT_DIR$/nanoservices/nanoservice-session/nanoservice-session.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nanoservices/nanoservice-session-save/nanoservice-session-save.iml" filepath="$PROJECT_DIR$/nanoservices/nanoservice-session-save/nanoservice-session-save.iml" />
       <module fileurl="file://$PROJECT_DIR$/nanoservices/nanoservice-user/nanoservice-user.iml" filepath="$PROJECT_DIR$/nanoservices/nanoservice-user/nanoservice-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nanoservices/nanoservice-user-activation/nanoservice-user-activation.iml" filepath="$PROJECT_DIR$/nanoservices/nanoservice-user-activation/nanoservice-user-activation.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/thesis.iml" filepath="$PROJECT_DIR$/.idea/thesis.iml" />
     </modules>
   </component>
