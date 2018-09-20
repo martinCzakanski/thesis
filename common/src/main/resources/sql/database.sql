@@ -1,3 +1,14 @@
+USE [master]
+GO
+
+CREATE DATABASE [thesis]
+GO
+
+/* For security reasons the login is created disabled and with a random password. */
+/****** Object:  Login [thesis]    Script Date: 21.09.2018 00:03:41 ******/
+CREATE LOGIN [thesis] WITH PASSWORD=N'QeNJ1A5ps6z7Su+tN8Cqhhq03qzNRKVwGsNC8uuP7yk=', DEFAULT_DATABASE=[thesis], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
+
 USE [thesis]
 GO
 /****** Object:  User [thesis]    Script Date: 2016-10-25 18:04:06 ******/
