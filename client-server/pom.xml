@@ -24,8 +24,8 @@
         <finalName>client-server</finalName>
         <plugins>
             <plugin>
-                <groupId>com.capgemini</groupId>
-                <artifactId>common-static-weave</artifactId>
+                <groupId>de.empulse.eclipselink</groupId>
+                <artifactId>staticweave-maven-plugin</artifactId>
             </plugin>
 
             <plugin>
