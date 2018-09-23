@@ -20,6 +20,6 @@ public class UserActivingController {
 
     @RequestMapping(value = ConstantRequest.USER_ACTIVATION, method = RequestMethod.GET)
     public ResponseEntity activeUserAccount(@PathVariable(ConstantRequest.ID_PATH) final int userId) {
-        return restTemplate.getForEntity(NanoserviceConstant.USER_SERVICE + "/" + userId + ConstantRequest.USER_ACTIVE, null);
+        return restTemplate.getForEntity(NanoserviceConstant.USER_SERVICE + ConstantRequest.USER +"/" + userId + ConstantRequest.USER_ACTIVE, null);
     }
 }
